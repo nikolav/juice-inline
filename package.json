@@ -1,0 +1,15 @@
+{
+  "name": "kantar",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "inline": "node src/inline.js "
+  },
+  "devDependencies": {
+    "@parcel/optimizer-data-url": "2.12.0",
+    "@parcel/transformer-inline-string": "2.12.0",
+    "@parcel/transformer-sass": "2.12.0",
+    "juice": "^10.0.0",
+    "lodash": "^4.17.21",
+    "parcel": "^2.12.0"
+  }
+}
