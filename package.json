@@ -1,5 +1,5 @@
 {
-  "name": "kantar",
+  "name": "app_inline_html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "inline": "node src/inline.js "
