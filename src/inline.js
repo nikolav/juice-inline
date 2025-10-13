@@ -3,6 +3,7 @@ const fs = require("fs");
 
 const find = require("lodash/find");
 const juice = require("juice");
+const { minify } = require("html-minifier-terser");
 
 const MESSAGE = find(process.argv, (val) => val.startsWith("--message"))
   .split("=")[1]
@@ -28,8 +29,28 @@ juice.juiceResources(
     },
   },
   (_error, htmlInlined) => {
-    fs.writeFileSync(outFile, htmlInlined, {
-      flag: "w",
+    minify(htmlInlined, {
+      collapseWhitespace: true,
+      decodeEntities: true,
+      html5: true,
+      keepClosingSlash: true,
+      minifyCSS: true,
+      minifyJS: true,
+      removeComments: true,
+      removeEmptyAttributes: true,
+      removeRedundantAttributes: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+      sortAttributes: true,
+      sortClassName: true,
+      useShortDoctype: true,
+      // collapseBooleanAttributes: true,
+      // removeAttributeQuotes: true,
+      // trimCustomFragments: true,
+    }).then((html) => {
+      fs.writeFileSync(outFile, html, {
+        flag: "w",
+      });
     });
   }
 );
